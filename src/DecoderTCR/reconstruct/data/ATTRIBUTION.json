@@ -1,0 +1,111 @@
+{
+  "stitchr": {
+    "component": "Stitchr 1.3.1",
+    "copyright": "Copyright (c) 2023 James M. Heather",
+    "license": "MIT",
+    "license_file": "../licenses/STITCHR_LICENSE.txt",
+    "license_sha256": "f9da7dadc171c4b61e35bcf9228eb9241c19a04e2d2e109500ef650f5cb44899",
+    "scope": "Stitchr software dependency"
+  },
+  "imgt_gene_db": {
+    "component": "IMGT/GENE-DB human TCR reference snapshot",
+    "database_release": "202614-7",
+    "download_tool": "IMGTgeneDL 0.6.1",
+    "snapshot_date": "2026-04-06",
+    "license": "CC BY 4.0",
+    "terms": "https://www.imgt.org/about/termsofuse.php",
+    "changes": "Germline sequences and runtime tables were copied without content changes except the recorded metadata redaction and final newline normalization",
+    "normalized_file": "stitchr/linkers.tsv",
+    "normalized_source_sha256": "d772c6fae5b400034fc9b0f152f0bfd1c89655bb7e521691f265fff14b0c194b",
+    "normalization": "A final newline was appended",
+    "redacted_file": "stitchr/HUMAN/IMGTgeneDLwarnings.txt",
+    "redacted_source_sha256": "7c2c65b08b1783a49f0a83ff1e5cbbf653b820bb190a4587a7218a54df78487c",
+    "redaction": "The input_arguments executable was reduced to IMGTgeneDL"
+  },
+  "imgt_gene_db_mouse": {
+    "component": "IMGT/GENE-DB mouse TCR reference snapshot",
+    "database_release": "202624-7",
+    "download_tool": "IMGTgeneDL 0.6.1",
+    "snapshot_date": "2026-06-17",
+    "license": "CC BY 4.0",
+    "terms": "https://www.imgt.org/about/termsofuse.php",
+    "source_sha256": {
+      "C-region-motifs.tsv": "ec8420e14274899e21b47ef6870c7c6ca998c0bbc36ecc321a7f7153b294482a",
+      "IMGTgeneDLwarnings.txt": "59a0749a067b216eef5b3d4a982577b02983deba9dd5d0eea848010665bb85d0",
+      "J-region-motifs.tsv": "7bf321c0c3cb7e9ba7347ea2c4e70ed4075be0e0c1f7a7b51a932aa3591fa183",
+      "TRA.fasta": "6e3e74d855c4b03ccbd72dcd429e99c9047976e46755c5553156773c103639d3",
+      "TRB.fasta": "64ddbe06e464d61a9897dfc4043ccbc7852c6be1378c4fd0f5ea47caecc212d0",
+      "TRD.fasta": "89c62e72743cfe9477edcf69e0da2af89abaee0a90c9d474d727a704ceea4ff0",
+      "TRG.fasta": "16aa23af7416a5273ab54b7d4e833255129d20fa1a6bf00060142ed114fa1774",
+      "data-production-date.tsv": "b39f8b2f58fc780d5eb17c91c94489a9deeba86e07f6bb3716ee9782adf2152e",
+      "kazusa/MOUSE.txt": "e030c6c9641e0982fd4e5c3021d5a8a6f6c10836b4b1b01f6f08ef13a62b63ce"
+    },
+    "changes": "Reference files were copied without content changes except the recorded warning-path redaction",
+    "redacted_file": "stitchr/MOUSE/IMGTgeneDLwarnings.txt",
+    "redacted_source_sha256": "59a0749a067b216eef5b3d4a982577b02983deba9dd5d0eea848010665bb85d0",
+    "redacted_output_sha256": "3390a4ffabd81a01a1a45806f1e2c5a753a39951969dd48c95cf013e32d3fd1a",
+    "redaction": "The input_arguments executable was reduced to IMGTgeneDL"
+  },
+  "ipd_imgt_hla": {
+    "component": "IPD-IMGT/HLA derived HLA sequence lookup",
+    "license": "Separate IPD-IMGT/HLA terms apply",
+    "terms": "https://www.ebi.ac.uk/ipd/imgt/hla/licence/",
+    "redistribution_permission": "confirmed",
+    "redistribution_scope": "Private DecoderTCR-internal repository inclusion and redistribution of the already-bundled derived HLA references",
+    "permission_confirmer": "Ben Lai",
+    "permission_confirmation_date": "2026-09-17",
+    "permission_basis": "Maintainer confirmation for the stated private redistribution scope, not a new upstream license grant",
+    "v1_source_revision": "e842d5b4ca742411b4257a503ea98a0eb23bfb3d",
+    "v1_source_file": "src/DecoderTCR/reconstruct/data/hla_reference.json",
+    "v1_source_sha256": "9d425bd350b91bd9a595af6ed4137268251e0ca810efd7a959f4faae5d2b59d7",
+    "v2_source_file": "data/TCR-pMHC-data-V2/raw_data/v2/mhc/mhc_sequences.csv",
+    "v2_source_sha256": "2746f7ea89e97ef313394ca85deb515e267357473f1854ae4df1f718cd2f53d1",
+    "b2m_source_file": "data/TCR-pMHC-data-V2/process_TCR_pMHC.py",
+    "b2m_source_sha256": "d674182158db12bc73663d8feece0dc6b2d6a26f5a6d123cfe504b1e0c97be9d",
+    "canonical_human_b2m_sha256": "e92bf108e2abfa0fc43ccdf0684d41b023e4368eb04b185c4578cda6a492fb46",
+    "changes": "V1 keeps human class I and B2M pairs. V2 keeps used human class I sequences and pairs each with canonical human B2M"
+  },
+  "v2_tcr_leaders": {
+    "component": "Distinct human TCR leader peptides derived from the IMGT TCR reference",
+    "license": "CC BY 4.0",
+    "terms": "https://www.imgt.org/about/termsofuse.php",
+    "source_file": "eval/data/imgt_tcr_leaders.txt",
+    "source_sha256": "fb8fdb5e9af92dda4ad89ea34d29aede1613c5e6bd3e3eb4e6f7be2d0f855b1e",
+    "changes": "Leader peptides are sorted by longest prefix at runtime"
+  },
+  "v2_species_mhc": {
+    "component": "Selected human class II and mouse MHC V2 pairs",
+    "source_revision": "73317e514733b03f9e78033d388c83d547a45761",
+    "sequence_source_file": "src/DecoderTCR/reconstruct/data/mhc_subset_v2.csv",
+    "sequence_source_sha256": "fd356e9cf57ce51c781bd1b3a79e4723292c9228e00931d5284b69db627cf38a",
+    "pair_source_file": "src/DecoderTCR/reconstruct/data/mhc_paired_v2.csv",
+    "pair_source_sha256": "debad2d396b9f699e0c2c4cbf53cdde5787d45c35bfa4090edd5083693c53db0",
+    "selected_human_class_ii_pairs": 60,
+    "selected_mouse_class_i_pairs": 5,
+    "selected_mouse_class_ii_pairs": 7,
+    "selection": "The sequence field was selected for explicit same-species pairs. Human nonclassical class I pairs were excluded",
+    "redistribution_permission": "pending",
+    "redistribution_scope": "Public release requires a separate rights determination"
+  },
+  "v2_mouse_tcr_leaders": {
+    "component": "Mouse TCR leader peptides derived from the bundled IMGT TCR reference",
+    "license": "CC BY 4.0",
+    "terms": "https://www.imgt.org/about/termsofuse.php",
+    "source_files": [
+      "stitchr/MOUSE/TRA.fasta",
+      "stitchr/MOUSE/TRB.fasta"
+    ],
+    "source_sha256": {
+      "TRA.fasta": "6e3e74d855c4b03ccbd72dcd429e99c9047976e46755c5553156773c103639d3",
+      "TRB.fasta": "64ddbe06e464d61a9897dfc4043ccbc7852c6be1378c4fd0f5ea47caecc212d0"
+    },
+    "functional_triplet_leaders": 213,
+    "excluded_nontriplet_alleles": [
+      "TRAV3N-3*01",
+      "TRAV7D-3*03",
+      "TRAV7N-5*01",
+      "TRAV7N-6*01"
+    ],
+    "changes": "Functional complete-triplet leader DNA records were translated with the standard genetic code"
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:decodertcr:catalog:2",
+  "title": "DecoderTCR current catalog and retained history generations",
+  "description": "Each generation is a complete catalog snapshot. Application checks recompute the canonical document digest excluding sha256 and verify the previous_sha256 chain, referenced manifest digests, release validation records, path safety, and artifact integrity. Filesystem access controls determine who can read or modify a registry.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "generation": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "previous_sha256": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "releases": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/releaseId"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/releaseReference"
+      }
+    },
+    "datasets": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/identity"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "results": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/identity"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "environments": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/identity"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "event": {
+      "$ref": "#/$defs/event"
+    }
+  },
+  "required": [
+    "schema_version",
+    "sha256",
+    "generation",
+    "previous_sha256",
+    "releases",
+    "datasets",
+    "results",
+    "environments",
+    "event"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "generation": {
+            "const": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "previous_sha256": {
+            "type": "null"
+          },
+          "event": {
+            "properties": {
+              "action": {
+                "const": "initialize"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "previous_sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!\\.$)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[^\\u0000]+$"
+    },
+    "identity": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._@:+-]*$"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^(decodertcr|decodertcr-esm2)@(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "releaseReference": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "validation_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "state": {
+          "enum": [
+            "available",
+            "archived",
+            "blocked"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "validation_sha256",
+        "state",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "uid",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "enum": [
+            "initialize",
+            "publish",
+            "archive",
+            "block",
+            "restore",
+            "register",
+            "register_bundle_set"
+          ]
+        },
+        "actor": {
+          "$ref": "#/$defs/actor"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "release_id": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "previous_state": {
+          "enum": [
+            null,
+            "available",
+            "archived",
+            "blocked"
+          ]
+        },
+        "state": {
+          "enum": [
+            "available",
+            "archived",
+            "blocked"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "dataset",
+            "result",
+            "environment"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/identity"
+        },
+        "bundles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bundleEventReference"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "action",
+        "actor",
+        "created_at"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "enum": [
+                  "publish",
+                  "archive",
+                  "block",
+                  "restore"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "release_id",
+              "previous_state",
+              "state",
+              "reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "register"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "kind",
+              "id"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "register_bundle_set"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "bundles"
+            ]
+          }
+        }
+      ]
+    },
+    "bundleEventReference": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "dataset",
+            "result",
+            "environment"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/identity"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

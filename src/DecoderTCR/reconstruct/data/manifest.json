@@ -1,0 +1,31 @@
+{
+  "files": {
+    "ATTRIBUTION.json": "dcfb4730752e243f91bd4ae7ea5c9b44889c32e3b1a6dd85ee7d126e9487a55c",
+    "hla_v1.json": "9d425bd350b91bd9a595af6ed4137268251e0ca810efd7a959f4faae5d2b59d7",
+    "hla_v2.json": "b38eb80cd50eef67441f689ae7871ffbf3fd2388b22b0ed5bcbc1518869f1e1c",
+    "hla_v2_species.json": "665fe8f9595cd2664d074ed33d496688117b11b2f7afa4c030f64c235e494222",
+    "stitchr/HUMAN/C-region-motifs.tsv": "b791be9c97a73abd5bb715e36eb208707d81f69b8502d5cfdd660cfec26393da",
+    "stitchr/HUMAN/IMGTgeneDLwarnings.txt": "4f87922931c0a1230197a3cc6f587fae90d0c0c618fb5c5e48c3c81e1d2de144",
+    "stitchr/HUMAN/J-region-motifs.tsv": "f166b96212b21d2920ea3f9fc006113bd7b57f45a2a22241610df06188ce5eee",
+    "stitchr/HUMAN/TRA.fasta": "7e3a75faf2226c63a27929cd1dfc300510f5baf2427ade76ef28dc41cd884010",
+    "stitchr/HUMAN/TRB.fasta": "01b8af606b72059e732d1ddea2e4107f32588ba66aa235f5a93be3c10c5aee3f",
+    "stitchr/HUMAN/TRD.fasta": "e56ff869b9ecc24f1e09b58e09c4c7e398a65efe8aebc4a50bafa94dc251df1b",
+    "stitchr/HUMAN/TRG.fasta": "35692e009129a87deead176075383e6548db8e5530f9079d4c4ea23e83c73dd4",
+    "stitchr/HUMAN/data-production-date.tsv": "11fc6471e1a424ad6adfe68419de8359334a0c7a01d2aaf037a91954e51bb308",
+    "stitchr/MOUSE/C-region-motifs.tsv": "ec8420e14274899e21b47ef6870c7c6ca998c0bbc36ecc321a7f7153b294482a",
+    "stitchr/MOUSE/IMGTgeneDLwarnings.txt": "3390a4ffabd81a01a1a45806f1e2c5a753a39951969dd48c95cf013e32d3fd1a",
+    "stitchr/MOUSE/J-region-motifs.tsv": "7bf321c0c3cb7e9ba7347ea2c4e70ed4075be0e0c1f7a7b51a932aa3591fa183",
+    "stitchr/MOUSE/TRA.fasta": "6e3e74d855c4b03ccbd72dcd429e99c9047976e46755c5553156773c103639d3",
+    "stitchr/MOUSE/TRB.fasta": "64ddbe06e464d61a9897dfc4043ccbc7852c6be1378c4fd0f5ea47caecc212d0",
+    "stitchr/MOUSE/TRD.fasta": "89c62e72743cfe9477edcf69e0da2af89abaee0a90c9d474d727a704ceea4ff0",
+    "stitchr/MOUSE/TRG.fasta": "16aa23af7416a5273ab54b7d4e833255129d20fa1a6bf00060142ed114fa1774",
+    "stitchr/MOUSE/data-production-date.tsv": "b39f8b2f58fc780d5eb17c91c94489a9deeba86e07f6bb3716ee9782adf2152e",
+    "stitchr/kazusa/HUMAN.txt": "6154f2aec34968591130a9854d0cfeaf7cf4e7f237be44e5f3181e23614765e5",
+    "stitchr/kazusa/MOUSE.txt": "e030c6c9641e0982fd4e5c3021d5a8a6f6c10836b4b1b01f6f08ef13a62b63ce",
+    "stitchr/linkers.tsv": "cafad9f7567dbb21bfc680e3982e32447d88deed3d16052f1ad3832d67f5bb43",
+    "tcr_leaders_mouse_v2.json": "a27ac8c2b78a05d3878cccd26c299a4021e22cc00db86e0bed06e9c42f70be6a",
+    "tcr_leaders_v2.txt": "fb8fdb5e9af92dda4ad89ea34d29aede1613c5e6bd3e3eb4e6f7be2d0f855b1e"
+  },
+  "format_version": 1,
+  "hash": "sha256"
+}
