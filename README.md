@@ -43,6 +43,19 @@ loaded = dt.load(model_id, device="cuda")
 
 `dt.artifact()` downloads and verifies an artifact but does not construct a model. `dt.load()` verifies the artifact and returns a `LoadedModel`.
 
+## Historical benchmark scores
+
+| Model | IMMREP23 macro AUROC | Viral public grid macro AUROC |
+|---|---:|---:|
+| `decodertcr@1.5.0:300M` | 0.6749 | 0.6957 |
+| `decodertcr@1.5.0:600M` | **0.6944** | 0.6707 |
+| `decodertcr@1.5.0:6B` | 0.6846 | **0.7057** |
+
+These historical scores use prepared sequence inputs and report unweighted macro AUROC across
+peptide groups. Gene-input scores may differ. The Viral public grid is a historical cross-lineage
+reference whose negatives often contain foreign HLA. It is distinct from the within-allele Viral
+benchmark.
+
 ## Score gene and CSV inputs
 
 Model operations accept gene-component input. A row contains paired alpha and beta V genes, J genes, CDR3 sequences, an MHC allele, and a peptide. Extended CDR3 aliases take precedence over ordinary CDR3 columns. The exact model selects its sequence preparation automatically.
@@ -161,8 +174,6 @@ DecoderTCR scoring masks the complete peptide in one forward pass. It averages t
 
 `Demo/quick_start.py` is a direct scoring example. `decodertcr demo` and `decodertcr reproduce` require registered result, environment, and reproduction dataset bundles. Raw gene-input datasets are not reproduction bundles. No public result or environment entries are registered, so both commands are unavailable.
 
-`viral-public-grid` is a historical cross-lineage reference dataset. Its negatives often contain foreign HLA. It is distinct from the within-allele Viral benchmark.
-
 ## Advanced registry selection
 
 Remote registries use `hf://OWNER/REPOSITORY/PREFIX`. The global CLI `--registry` option precedes the subcommand. `init` has its own `--registry` option.
@@ -193,6 +204,6 @@ Scoring, embedding, profiling, and gene-component APIs require `model=<exact ID>
 
 ## Limits and licensing
 
-The retained historical results do not validate this package or the six exact model artifacts. Redistribution rights and attribution for the bundled HLA and MHC references and benchmark datasets are not established by this source license. Do not publicly distribute those assets without separate permission.
+The historical prepared-input references do not validate gene-input scoring or every package workflow. Redistribution rights and attribution for the bundled HLA and MHC references and benchmark datasets are not established by this source license. Do not publicly distribute those assets without separate permission.
 
 First-party source is MIT licensed. Vendored backbone implementations retain their upstream license files. Model weights and datasets carry their own terms. The package license does not relicense weights, HLA reference data, or benchmark datasets.
